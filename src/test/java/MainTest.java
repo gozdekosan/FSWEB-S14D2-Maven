@@ -29,7 +29,7 @@ public class MainTest {
     @BeforeEach
     void setUp() {
         lamp = new Lamp(LampType.NORMAL, true, 80);
-        bed = new Bed("Çift Kişilik", 4, 1, 2, 2);
+        bed = new Bed(2, 4, 1, 2);
         wardrobe = new Wardrobe(2, 4, 40);
         carpet = new Carpet(3,5, PaintColor.RED);
         ceiling = new Ceiling(3, PaintColor.RED);
@@ -70,13 +70,11 @@ public class MainTest {
     @DisplayName("Bed sınıf değişkenleri doğru access modifier değerlerine sahip mi ?")
     @Test
     public void testBedAccessModifiers() throws NoSuchFieldException {
-        Field styleField = bed.getClass().getDeclaredField("style");
         Field pillowsField = bed.getClass().getDeclaredField("pillows");
         Field heightField = bed.getClass().getDeclaredField("height");
         Field sheetsField = bed.getClass().getDeclaredField("sheets");
         Field quiltsField = bed.getClass().getDeclaredField("quilts");
 
-        assertEquals(styleField.getModifiers(), 2);
         assertEquals(pillowsField.getModifiers(), 2);
         assertEquals(heightField.getModifiers(), 2);
         assertEquals(sheetsField.getModifiers(), 2);
@@ -86,7 +84,6 @@ public class MainTest {
     @DisplayName("Bed sınıf değişkenleri doğru type değerlerine sahip mi ?")
     @Test
     public void testBedInstanceTypes() throws NoSuchFieldException {
-        assertThat(bed.getStyle(), instanceOf(String.class));
         assertThat(bed.getHeight(), instanceOf(Integer.class));
         assertThat(bed.getQuilts(), instanceOf(Integer.class));
         assertThat(bed.getSheets(), instanceOf(Integer.class));
